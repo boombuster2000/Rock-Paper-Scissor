@@ -47,4 +47,3 @@ while True:
         print_animation(moves)
         user_move = get_user_move(moves)
         bot_move = get_bot_move(moves)
-        print(bot_move)
