@@ -1,13 +1,23 @@
 from time import sleep
 from os import system
 from random import choice
+import platform
+
 
 moves = {"Rock":"1", 
          "Paper":"2", 
          "Scissor":"3"}
 
+def clear_screen():
+    os = platform.system()
+
+    if os == "Windows": system("cls")
+    elif os == "Darwin" or os == "Linux": system("clear")
+    else: print(os)
+
+
 def get_menu_option():
-    system("cls")
+    clear_screen()
 
     options = {
         "Single Player": "1",
@@ -21,13 +31,13 @@ def get_menu_option():
         if user_option in options.values(): return user_option
 
 def print_animation(moves):
-    system("cls")
+    clear_screen()
     for move in moves.keys():
         print(move)
         sleep(1)
 
 def get_user_move(moves):
-    system("cls")
+    clear_screen()
 
     for move in moves.keys():
         print(f"{moves[move]}) {move}")
@@ -36,8 +46,6 @@ def get_user_move(moves):
         user_move = input(">> ")
         for move, move_value in zip(moves.keys(), moves.values()):
             if user_move == move_value : return move
-
-
 
 def get_bot_move(moves):
     return choice(list(moves.keys()))
@@ -55,7 +63,7 @@ def get_winner(user_move, bot_move):
         if winner == int(move_value) : return move
 
 def print_results(user_move, bot_move, winner):
-    system("cls")
+    clear_screen()
     print(f"Your Move: {user_move}")
     print(f"Bot Move: {bot_move}")
     print(f"Winner: {winner}")
@@ -64,7 +72,7 @@ while True:
     menu_option = get_menu_option()
 
     if menu_option == "x": break
-    elif menu_option == "1": 
+    elif menu_option == "1":
         print_animation(moves)
         user_move = get_user_move(moves)
         bot_move = get_bot_move(moves)
