@@ -1,5 +1,6 @@
 from time import sleep
 from os import system
+from random import choice
 
 moves = {"Rock":"1", 
          "Paper":"2", 
@@ -35,6 +36,8 @@ def get_user_move(moves):
         user_move = input(">> ")
         if user_move in moves.values(): return
 
+def get_bot_move(moves):
+    return choice(list(moves.keys()))
 
 while True:
     menu_option = get_menu_option()
@@ -43,3 +46,5 @@ while True:
     elif menu_option == "1": 
         print_animation(moves)
         user_move = get_user_move(moves)
+        bot_move = get_bot_move(moves)
+        print(bot_move)
