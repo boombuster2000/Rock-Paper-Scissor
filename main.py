@@ -78,4 +78,4 @@ while True:
         bot_move = get_bot_move(moves)
         winner = get_winner(user_move, bot_move)
         print_results(user_move, bot_move, winner)
-        system("pause")
+        input("Press enter to continue... ")
