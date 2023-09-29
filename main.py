@@ -54,6 +54,12 @@ def get_winner(user_move, bot_move):
     for move, move_value in zip(moves.keys(), moves.values()):
         if winner == int(move_value) : return move
 
+def print_results(user_move, bot_move, winner):
+    system("cls")
+    print(f"Your Move: {user_move}")
+    print(f"Bot Move: {bot_move}")
+    print(f"Winner: {winner}")
+
 while True:
     menu_option = get_menu_option()
 
@@ -63,3 +69,4 @@ while True:
         user_move = get_user_move(moves)
         bot_move = get_bot_move(moves)
         winner = get_winner(user_move, bot_move)
+        print_results(user_move, bot_move, winner)
