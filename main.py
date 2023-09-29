@@ -1,4 +1,5 @@
 from time import sleep
+moves = ["Rock", "Paper", "Scissor"]
 
 def get_menu_option():
     options = {
@@ -19,10 +20,10 @@ def print_animation():
     sleep(1)
     print("Scissor")
 
-
 while True:
     menu_option = get_menu_option()
 
     if menu_option == "x": break
     elif menu_option == "1": 
         print_animation()
+        
