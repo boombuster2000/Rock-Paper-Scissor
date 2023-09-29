@@ -34,10 +34,25 @@ def get_user_move(moves):
 
     while True:
         user_move = input(">> ")
-        if user_move in moves.values(): return
+        for move, move_value in zip(moves.keys(), moves.values()):
+            if user_move == move_value : return move
+
+
 
 def get_bot_move(moves):
     return choice(list(moves.keys()))
+
+def get_winner(user_move, bot_move):
+    user_move = int(moves[user_move])
+    bot_move = int(moves[bot_move])
+
+    winner = None
+    if user_move == bot_move: return "Draw"
+    elif (user_move - bot_move)**2 == 1: winner = user_move if user_move > bot_move else bot_move
+    elif (user_move - bot_move)**2 == 4: winner = user_move if user_move < bot_move else bot_move
+
+    for move, move_value in zip(moves.keys(), moves.values()):
+        if winner == int(move_value) : return move
 
 while True:
     menu_option = get_menu_option()
@@ -47,3 +62,4 @@ while True:
         print_animation(moves)
         user_move = get_user_move(moves)
         bot_move = get_bot_move(moves)
+        winner = get_winner(user_move, bot_move)
