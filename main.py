@@ -1,7 +1,11 @@
 from time import sleep
+from os import system
+
 moves = ["Rock", "Paper", "Scissor"]
 
 def get_menu_option():
+    system("cls")
+    
     options = {
         "Single Player": "1",
         "Exit":"x"
@@ -14,6 +18,7 @@ def get_menu_option():
         if user_option in options.values(): return user_option
 
 def print_animation(moves):
+    system("cls")
     for move in moves:
         print(move)
         sleep(1)
