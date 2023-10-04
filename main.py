@@ -3,6 +3,7 @@ from os import system
 from random import choice
 import platform
 import socket
+import threading
 
 
 moves = {"Rock":"1", 
@@ -83,8 +84,18 @@ def print_results(user_move, bot_move, winner):
 def get_lan_games():
     pass
 
-def host_game():
-    pass
+def host_game(game_name):
+    print("Hosting game!")
+    sleep(3)
+
+def get_game_name():
+    clear_screen()
+    game_name = input("Enter game name: ")
+    if game_name == input("Confirm game name: "): return game_name
+    print("Game name did not match! ")
+    input("Press enter to continue...")
+    return
+
 
 while True:
     print_menu(main_menu_options)
@@ -103,6 +114,8 @@ while True:
         print_menu(lan_play_options)
         lan_play_option = get_menu_option(lan_play_options)
         if lan_play_option == "1":
-            host_game()
+            game_name = get_game_name()
+            if game_name == None: continue
+            host_game(game_name)
         elif lan_play_option == "2":
             lan_games = get_lan_games()
