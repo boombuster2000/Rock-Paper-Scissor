@@ -21,6 +21,7 @@ def get_menu_option():
 
     options = {
         "Single Player": "1",
+        "LAN Play": "2",
         "Exit":"x"
     }
 
@@ -79,3 +80,5 @@ while True:
         winner = get_winner(user_move, bot_move)
         print_results(user_move, bot_move, winner)
         input("Press enter to continue... ")
+    elif menu_option == "2":
+        print("In development")
