@@ -2,6 +2,7 @@ from time import sleep
 from os import system
 from random import choice
 import platform
+import socket
 
 
 moves = {"Rock":"1", 
@@ -10,7 +11,7 @@ moves = {"Rock":"1",
 }
 
 main_menu_options = {
-        "Single Player": 1,
+        "Single Player": "1",
         "LAN Play": "2",
         "Exit":"x"
 }
@@ -79,6 +80,12 @@ def print_results(user_move, bot_move, winner):
     print(f"Bot Move: {bot_move}")
     print(f"Winner: {winner}")
 
+def get_lan_games():
+    pass
+
+def host_game():
+    pass
+
 while True:
     print_menu(main_menu_options)
     main_menu_option = get_menu_option(main_menu_options)
@@ -91,6 +98,11 @@ while True:
         winner = get_winner(user_move, bot_move)
         print_results(user_move, bot_move, winner)
         input("Press enter to continue... ")
+
     elif main_menu_option == "2":
         print_menu(lan_play_options)
         lan_play_option = get_menu_option(lan_play_options)
+        if lan_play_option == "1":
+            host_game()
+        elif lan_play_option == "2":
+            lan_games = get_lan_games()
