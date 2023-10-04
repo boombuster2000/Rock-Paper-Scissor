@@ -33,7 +33,6 @@ def print_menu(options):
     if not isinstance(options, dict): return
     for option in options.keys(): print(f"{options[option]}) {option}")
 
-
 def get_menu_option(options):
     if not isinstance(options, dict): return
 
@@ -80,7 +79,6 @@ def print_results(user_move, bot_move, winner):
     print(f"Bot Move: {bot_move}")
     print(f"Winner: {winner}")
 
-
 while True:
     print_menu(main_menu_options)
     main_menu_option = get_menu_option(main_menu_options)
@@ -94,4 +92,5 @@ while True:
         print_results(user_move, bot_move, winner)
         input("Press enter to continue... ")
     elif main_menu_option == "2":
+        print_menu(lan_play_options)
         lan_play_option = get_menu_option(lan_play_options)
