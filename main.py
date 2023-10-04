@@ -6,7 +6,20 @@ import platform
 
 moves = {"Rock":"1", 
          "Paper":"2", 
-         "Scissor":"3"}
+         "Scissor":"3"
+}
+
+main_menu_options = {
+        "Single Player": 1,
+        "LAN Play": "2",
+        "Exit":"x"
+}
+
+lan_play_options = {
+        "Host Game": "1",
+        "Join Game": "2",
+        "Exit":"x"
+}
 
 def clear_screen():
     os = platform.system()
@@ -15,21 +28,19 @@ def clear_screen():
     elif os == "Darwin" or os == "Linux": system("clear")
     else: print(os)
 
-
-def get_menu_option():
+def print_menu(options):
     clear_screen()
-
-    options = {
-        "Single Player": "1",
-        "LAN Play": "2",
-        "Exit":"x"
-    }
-
+    if not isinstance(options, dict): return
     for option in options.keys(): print(f"{options[option]}) {option}")
+
+
+def get_menu_option(options):
+    if not isinstance(options, dict): return
 
     while True:
         user_option = input(">> ").lower()
         if user_option in options.values(): return user_option
+        if user_option.isnumeric() and int(user_option) in options.values(): return user_option
 
 def print_animation(moves):
     clear_screen()
@@ -69,16 +80,18 @@ def print_results(user_move, bot_move, winner):
     print(f"Bot Move: {bot_move}")
     print(f"Winner: {winner}")
 
-while True:
-    menu_option = get_menu_option()
 
-    if menu_option == "x": break
-    elif menu_option == "1":
+while True:
+    print_menu(main_menu_options)
+    main_menu_option = get_menu_option(main_menu_options)
+
+    if main_menu_option == "x": break
+    elif main_menu_option == "1":
         print_animation(moves)
         user_move = get_user_move(moves)
         bot_move = get_bot_move(moves)
         winner = get_winner(user_move, bot_move)
         print_results(user_move, bot_move, winner)
         input("Press enter to continue... ")
-    elif menu_option == "2":
-        print("In development")
+    elif main_menu_option == "2":
+        lan_play_option = get_menu_option(lan_play_options)
